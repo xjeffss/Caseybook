@@ -5,6 +5,8 @@ import './App.css';
 import Profile from './components/Profile';
 import FriendsPage from './components/FriendsPage';
 
+import axios from 'axios';
+
 class App extends Component {
   constructor(props){
     super(props);
@@ -19,12 +21,38 @@ class App extends Component {
       potentialFriends: []
     }
   }
+  async componentDidMount() {
+    // do an axios call to get top stories
+    const friendOne = await axios.get('https://randomuser.me/api/');
+    const friendTwo = await axios.get('https://randomuser.me/api/');
+    const friendThree = await axios.get('https://randomuser.me/api/');
+    const friendFour = await axios.get('https://randomuser.me/api/');
+    const friendFive = await axios.get('https://randomuser.me/api/');
+
+    const friends = [
+      friendOne.data.results[0],
+      friendTwo.data.results[0],
+      friendThree.data.results[0],
+      friendFour.data.results[0],
+      friendFive.data.results[0]
+      ]
+      // update state with the response
+    this.setState({
+      potentialFriends: friends,
+      apiDataLoaded: true
+    })
+  }
   render() {
+  
       return (
     <div className="App">
       <h1>Caseybook</h1>
-      <Profile user={this.state.user} />
-      <FriendsPage />
+      <Profile user={this.state.user}
+      
+      />
+      <FriendsPage 
+      potentialFriends={this.state.potentialFriends}
+      />
     </div>
      );
     }
