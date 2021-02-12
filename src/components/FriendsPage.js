@@ -6,7 +6,7 @@ const FriendsPage = (props) => {
        <div>
         {props.potentialFriends.map(friend => (
             <div>     
-                <img src={friend.picture.thunbnail}/>
+                <img src={friend.picture.thumbnail}/>
                 <h3>{friend.name.first}{friend.name.last}</h3>
                 <p>{friend.login.username}</p>
             </div>
