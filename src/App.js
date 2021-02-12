@@ -52,7 +52,7 @@ class App extends Component {
         <Link to="/users"> Users </Link>
       </nav>
       <h1>Caseybook</h1>
-      <Route path="/" render={() => (
+      <Route exact path="/" render={() => (
         <Profile user={this.state.user}/>
       )}
       />
